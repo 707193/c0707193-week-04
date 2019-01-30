@@ -10,6 +10,8 @@ namespace c0707193
     {
         static void Main(string[] args)
         {
+            Countryside blue = new Countryside();
+            blue.Launch();
         }
     }
 
@@ -19,6 +21,8 @@ namespace c0707193
         // what kind of data do we need in a NODE?
         public Village nextvillage;
         public String VillageName;
+        public Village previousVillage;
+        public Village nextVillage;
         public bool isAstrildeHere = false;
 
     }
@@ -28,11 +32,16 @@ namespace c0707193
         Village Toronto = new Village();
         Village Maple = new Village();
         Village Ajex = new Village();
-        
+        Village First;
+        Village last;
+        Village Temp;
 
 
-            public void Launch()
+        public void Launch()
         {
+           
+            Village First = Toronto;
+            Village last = Ajex;
             Toronto.VillageName = "Toronto";
             Toronto.nextVillage = Maple;
             Toronto.previousVillage = null;
@@ -42,6 +51,23 @@ namespace c0707193
             Ajex.VillageName = "Ajex";
             Ajex.nextVillage = null;
             Ajex.previousVillage = Maple;
+
+            Console.WriteLine(this.dispalyMap());
+
+        }
+        public string dispalyMap()
+        {
+            string listofcities = "";
+            // we need toprint all cities in the area
+
+            while (true)
+            {
+                listofcities = listofcities + First.VillageName;
+                Temp = First.nextVillage;
+                listofcities = listofcities + Temp.VillageName;
+            }
+            return listofcities;
+
         }
     }
 }
